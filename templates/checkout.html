@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Checkout</h1>
+
+<ul class="list-group mb-4">
+
+{% for item in items %}
+
+<li class="list-group-item">
+
+    {{ item.product.name }}
+    -
+    Quantity: {{ item.quantity }}
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+<h3>Total: ₹{{ total }}</h3>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+
+        <textarea class="form-control"
+                  name="address"
+                  placeholder="Enter Address"></textarea>
+
+    </div>
+
+    <button class="btn btn-primary"
+            type="submit">
+
+        Place Order
+
+    </button>
+
+</form>
+
+{% endblock %}
